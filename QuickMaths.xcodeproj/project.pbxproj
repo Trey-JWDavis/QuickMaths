@@ -7,19 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0216E82613BD7800E685EF /* NumericTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0216E72613BD7800E685EF /* NumericTextField.swift */; };
+		0A38E205262755D600CBE6C1 /* PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E204262755D600CBE6C1 /* PeriodPicker.swift */; };
+		0A909C54262DEFF600537F4A /* NpvIrrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A909C53262DEFF600537F4A /* NpvIrrView.swift */; };
+		0A909C5A262DF4C200537F4A /* NpvIrrCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A909C59262DF4C200537F4A /* NpvIrrCalculator.swift */; };
+		0A909C5E262DF4D000537F4A /* NpvIrrViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A909C5D262DF4D000537F4A /* NpvIrrViewModel.swift */; };
 		0A9D1B20260E3A9100E3DCD5 /* QuickMathsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D1B1F260E3A9100E3DCD5 /* QuickMathsApp.swift */; };
 		0A9D1B22260E3A9100E3DCD5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D1B21260E3A9100E3DCD5 /* ContentView.swift */; };
 		0A9D1B24260E3A9300E3DCD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D1B23260E3A9300E3DCD5 /* Assets.xcassets */; };
 		0A9D1B27260E3A9300E3DCD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D1B26260E3A9300E3DCD5 /* Preview Assets.xcassets */; };
+		0AC5BA372612431F00AD4D5B /* TVMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5BA362612431F00AD4D5B /* TVMView.swift */; };
+		0AC921E22614EAF1009ED7DE /* TVMCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC921E12614EAF1009ED7DE /* TVMCalculator.swift */; };
+		0AC921E52615618E009ED7DE /* TVMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC921E42615618E009ED7DE /* TVMViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0216E72613BD7800E685EF /* NumericTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericTextField.swift; sourceTree = "<group>"; };
+		0A38E204262755D600CBE6C1 /* PeriodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPicker.swift; sourceTree = "<group>"; };
+		0A909C53262DEFF600537F4A /* NpvIrrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpvIrrView.swift; sourceTree = "<group>"; };
+		0A909C59262DF4C200537F4A /* NpvIrrCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpvIrrCalculator.swift; sourceTree = "<group>"; };
+		0A909C5D262DF4D000537F4A /* NpvIrrViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpvIrrViewModel.swift; sourceTree = "<group>"; };
 		0A9D1B1C260E3A9100E3DCD5 /* QuickMaths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickMaths.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9D1B1F260E3A9100E3DCD5 /* QuickMathsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMathsApp.swift; sourceTree = "<group>"; };
 		0A9D1B21260E3A9100E3DCD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A9D1B23260E3A9300E3DCD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A9D1B26260E3A9300E3DCD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A9D1B28260E3A9300E3DCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AC5BA362612431F00AD4D5B /* TVMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMView.swift; sourceTree = "<group>"; };
+		0AC921E12614EAF1009ED7DE /* TVMCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMCalculator.swift; sourceTree = "<group>"; };
+		0AC921E42615618E009ED7DE /* TVMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +69,17 @@
 			isa = PBXGroup;
 			children = (
 				0A9D1B1F260E3A9100E3DCD5 /* QuickMathsApp.swift */,
-				0A9D1B21260E3A9100E3DCD5 /* ContentView.swift */,
 				0A9D1B23260E3A9300E3DCD5 /* Assets.xcassets */,
 				0A9D1B28260E3A9300E3DCD5 /* Info.plist */,
+				0A9D1B21260E3A9100E3DCD5 /* ContentView.swift */,
+				0AC5BA362612431F00AD4D5B /* TVMView.swift */,
+				0AC921E42615618E009ED7DE /* TVMViewModel.swift */,
+				0AC921E12614EAF1009ED7DE /* TVMCalculator.swift */,
+				0A909C53262DEFF600537F4A /* NpvIrrView.swift */,
+				0A909C5D262DF4D000537F4A /* NpvIrrViewModel.swift */,
+				0A909C59262DF4C200537F4A /* NpvIrrCalculator.swift */,
+				0A0216E72613BD7800E685EF /* NumericTextField.swift */,
+				0A38E204262755D600CBE6C1 /* PeriodPicker.swift */,
 				0A9D1B25260E3A9300E3DCD5 /* Preview Content */,
 			);
 			path = QuickMaths;
@@ -138,8 +162,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A38E205262755D600CBE6C1 /* PeriodPicker.swift in Sources */,
+				0AC921E22614EAF1009ED7DE /* TVMCalculator.swift in Sources */,
 				0A9D1B22260E3A9100E3DCD5 /* ContentView.swift in Sources */,
+				0A909C5E262DF4D000537F4A /* NpvIrrViewModel.swift in Sources */,
+				0A909C5A262DF4C200537F4A /* NpvIrrCalculator.swift in Sources */,
+				0AC921E52615618E009ED7DE /* TVMViewModel.swift in Sources */,
+				0A0216E82613BD7800E685EF /* NumericTextField.swift in Sources */,
 				0A9D1B20260E3A9100E3DCD5 /* QuickMathsApp.swift in Sources */,
+				0AC5BA372612431F00AD4D5B /* TVMView.swift in Sources */,
+				0A909C54262DEFF600537F4A /* NpvIrrView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
