@@ -8,12 +8,27 @@
 import Foundation
 
 struct NpvIrrCalculator {
-    var holdingPeriod: Int
+    var holdingPeriod: Double
     var npv: Double
     var irr: Double
     var cashflows: [Double]
     var presentValue: Double
     var futureValue: Double
     
+    init() {
+        holdingPeriod = 5
+        npv = 0
+        irr = 0
+        cashflows = []
+        presentValue = 0
+        futureValue = 0
+    }
     
+    func calcIRR() {
+        
+    }
+    
+    func calcNPV() {
+        
+    }
 }

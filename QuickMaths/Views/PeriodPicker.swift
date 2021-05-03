@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct PeriodPicker: View {
-    @Binding var n: Periods
+    @Binding var n: Period
     
     var body: some View {
         Picker(selection: $n, label: Text(n.localizedName)) {
-            ForEach(Periods.allCases) {
+            ForEach(Period.allCases) {
                 Text($0.rawValue).tag($0)
             }
         }
     }
 }
 
-enum Periods: String, Equatable, CaseIterable, Identifiable {
+enum Period: String, Equatable, CaseIterable, Identifiable {
     case annually = "Annually"
     case semiannually = "Semiannually"
     case quarterly = "Quarterly"

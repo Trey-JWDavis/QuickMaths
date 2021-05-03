@@ -11,13 +11,7 @@ import Combine
 struct TVMView: View {
     
     @ObservedObject var calculator: TVMViewModel
-    
-    @State private var pv = ""
-    @State private var pmt = ""
-    @State private var n: Periods = .annually
-    @State private var t = ""
-    @State private var i = ""
-    @State private var fv = ""
+    @State private var inputString = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,33 +20,33 @@ struct TVMView: View {
                     HStack {
                         Text("Present Value: ")
                         Spacer()
-                        NumericTextField(input: $pv).frame(width: 150)
+                        NumericTextField(input: $calculator.presentValue).frame(width: 150)
                     }
                     HStack {
                         Text("Payment Amount: ")
                         Spacer()
-                        NumericTextField(input: $pmt).frame(width: 150)
+                        NumericTextField(input: $calculator.paymentAmount).frame(width: 150)
                     }
                     HStack {
                         Text("Compounded:")
                         Spacer()
-                        PeriodPicker(n: $n)
+                        PeriodPicker(n: $calculator.paymentsPerYear)
                             .pickerStyle(MenuPickerStyle())
                     }
                     HStack {
                         Text("Years: ")
                         Spacer()
-                        NumericTextField(input: $t).frame(width: 150)
+                        NumericTextField(input: $calculator.numberOfYears).frame(width: 150)
                     }
                     HStack {
                         Text("Interest: ")
                         Spacer()
-                        NumericTextField(input: $i).frame(width: 150)
+                        NumericTextField(input: $calculator.interest).frame(width: 150)
                     }
                     HStack {
                         Text("Future Value: ")
                         Spacer()
-                        NumericTextField(input: $fv).frame(width: 150)
+                        NumericTextField(input: $calculator.futureValue).frame(width: 150)
                     }
                 }
                     .multilineTextAlignment(.trailing)
@@ -62,54 +56,55 @@ struct TVMView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        pv = ""
-                        pmt = ""
-                        n = .annually
-                        t = ""
-                        i = ""
-                        fv = ""
+                        hideKeyboard()
+                        calculator.clear()
                     }, label: {
-                        Text("Clear All Values")
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10).frame(width: 100, height: 35)
+                            Text("Clear").foregroundColor(.white)
+                        }
                     })
                 }.padding()
                 
                 HStack {
                     Button(action: {
                         hideKeyboard()
-                        saveValues()
                         
+                        print("")
+                        print("Calculating PV")
+                        printAllCalcValues()
                         calculator.calcPresentValue()
-                        pv = calculator.presentValue
                     }, label: {
                         Text("PV")
                     })
                     Spacer()
                     Button(action: {
                         hideKeyboard()
-                        saveValues()
                         
+                        print("")
+                        print("Calculating I/YR")
+                        printAllCalcValues()
                         calculator.calcInterest()
-                        i = calculator.interest
                     }, label: {
                         Text("I/YR")
                     })
                     Spacer()
                     Button(action: {
                         hideKeyboard()
-                        saveValues()
-                        
+                        print("")
+                        print("Calculating PMT")
+                        printAllCalcValues()
                         calculator.calcPayment()
-                        pmt = calculator.paymentAmount
                     }, label: {
                         Text("PMT")
                     })
                     Spacer()
                     Button(action: {
                         hideKeyboard()
-                        saveValues()
-                        
+                        print("")
+                        print("Calculating FV")
+                        printAllCalcValues()
                         calculator.calcFutureValue()
-                        fv = calculator.futureValue
                     }, label: {
                         Text("FV")
                     })
@@ -118,17 +113,7 @@ struct TVMView: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
-            //.keyboardType(.decimalPad)
         }
-    }
-    
-    func saveValues() {
-        calculator.presentValue = pv
-        calculator.paymentAmount = pmt
-        calculator.paymentsPerYear = n.rawValue
-        calculator.numberOfYears = t
-        calculator.interest = i
-        calculator.futureValue = fv
     }
     
     func printAllCalcValues() {

@@ -8,7 +8,7 @@
 import Foundation
 
 struct TVMCalculator {
-    var presentValue: Double
+    var presentValue: Double?
     var paymentAmount: Double
     var paymentsPerYear: Double
     var numberOfYears: Double
@@ -17,31 +17,34 @@ struct TVMCalculator {
     
     init() {
         presentValue = 0
-        paymentsPerYear = 0
+        paymentsPerYear = 1
         numberOfYears = 0
         interest = 0
         paymentAmount = 0
         futureValue = 0
     }
     
+    mutating func clear() {
+        self = .init()
+    }
+    
     mutating func calcFutureValue() {
-        
         if (presentValue == 0) {
             futureValue = (paymentAmount / interest) * (pow((1 + interest), numberOfYears) - 1)
         } else {
-            futureValue = presentValue * pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears))
+            futureValue = presentValue! * pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears))
         }
     }
 
     mutating func calcPayment() {
         if (futureValue == 0) {
-            paymentAmount = -presentValue *
+            paymentAmount = -presentValue! *
                 ((interest / paymentsPerYear) * pow(1 + (interest / paymentsPerYear), paymentsPerYear * numberOfYears)) /
                 (pow(1 + (interest / paymentsPerYear), paymentsPerYear * numberOfYears) - 1)
         } else {
             paymentAmount = futureValue / ( (pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears)) - 1) / (interest / paymentsPerYear) )
         }
-        
+
     }
     
     mutating func calcPresentValue() {
@@ -50,15 +53,15 @@ struct TVMCalculator {
     
     mutating func calcInterest() {
         if (paymentAmount == 0) {
-            interest = pow((futureValue / presentValue), (1 / (paymentsPerYear * numberOfYears))) - 1
+            interest = pow((futureValue / presentValue!), (1 / (paymentsPerYear * numberOfYears))) - 1
         } else {
-            interest = IRR(numOfCashflows: Int(paymentsPerYear * numberOfYears))
+            interest = IRR(for: Int(paymentsPerYear * numberOfYears))
         }
     }
     
     // Accurate within 0.00001 percent
     // If no result after 20 tries, -1 is returned
-    func IRR(numOfCashflows cashflows: Int, precision: Double = 0.00001, maxIterations: Int = 20) -> Double {
+    func IRR(for cashflows: Int, precision: Double = 0.00001, maxIterations: Int = 20) -> Double {
         var npv: Double
         var denom: Double = 0
         var oldNPV: Double = 0
@@ -71,7 +74,7 @@ struct TVMCalculator {
         }
         
         for _ in 0..<maxIterations {
-            npv = presentValue
+            npv = presentValue!
             for j in 0..<cashflows {
                 denom = pow(1 + (guessRate / paymentsPerYear), Double(j + 1))
                 npv += (paymentAmount / denom)
@@ -95,6 +98,7 @@ struct TVMCalculator {
                 highGuessRate = guessRate
             }
         }
+        print("guess rate:", guessRate)
         return guessRate
     }
 }
