@@ -5,36 +5,49 @@
 //  Created by Trey Davis on 3/30/21.
 //
 
-import SwiftUI
-import Combine
+/*
+ The purpose of this view is as follows:
+ 1. Allow the user to enter numeric values into a textfield
+ 2. Allow the user to specifiy the formatting, decimal by default
+ 3. Save the user's value without the need for an onCommit() call
+ 4. Format the input so that editing will be easier
+ 5. Use Combine to only allow specific characters to be entered
+ */
 
 import SwiftUI
 import Combine
 
 struct NumericTextField: View {
     @Binding var input: Double
-    @State private var inputString: String = ""
+    var formatter: NumberFormatter = NumberFormatter()
+    private var formattedInputString: String {
+        formatter.string(from: NSNumber(value: input)) ?? "0"
+    }
+    
+    @State private var inputString = ""
     @State private var isEditing = false
-
     
     var body: some View {
-        TextField("Enter a number...",
+        TextField("",
                   text: Binding(get: {
                     if isEditing {
                         return inputString
                     } else {
-                        return "\(input)"
+                        return formattedInputString
                     }
                   }, set: { str in
                     inputString = str
-                    input = Double(inputString) ?? 0
+                    if formatter.numberStyle == .percent && Double(str) ?? 0 >= 1 {
+                        input = (Double(str) ?? 0) / 100
+                    } else {
+                        input = Double(str) ?? 0
+                    }
                   }),
                   onEditingChanged: { editing in
-                    inputString = input == 0 ? "" : "\(input)"
-                    isEditing = editing
-                    if !editing {
-                        inputString = ""
+                    if editing {
+                        inputString = input == 0 ? "" : input.removeTrailingZeros()
                     }
+                    isEditing = editing
                   })
             .onReceive(Just(inputString)) { newValue in
                 let newValueString = "\(newValue)"
@@ -46,5 +59,16 @@ struct NumericTextField: View {
                 }
             }
             .keyboardType(.decimalPad)
+    }
+}
+
+extension Double {
+    func removeTrailingZeros() -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: self)
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 16
+        
+        return String(formatter.string(from: number) ?? "")
     }
 }

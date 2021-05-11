@@ -24,13 +24,13 @@ class TVMViewModel: ObservableObject {
     var paymentsPerYear: Period {
         get {
             switch calculator.paymentsPerYear {
-                case 1: return .annually
-                case 2: return .semiannually
-                case 4: return .quarterly
-                case 12: return .monthly
-                case 52: return .weekly
-                case 365: return .daily
-                default: return .annually
+                case 1:     return .annually
+                case 2:     return .semiannually
+                case 4:     return .quarterly
+                case 12:    return .monthly
+                case 52:    return .weekly
+                case 365:   return .daily
+                default:    return .annually
             }
         }
         set {

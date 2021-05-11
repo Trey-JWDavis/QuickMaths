@@ -12,7 +12,7 @@ struct ContentView: View {
         NavigationView {
             TabView {
                 TVMView(calculator: TVMViewModel())
-                    .padding(.horizontal)
+                    .padding()
                     .tabItem {
                         Text("TVM")
                     }
@@ -32,3 +32,11 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif

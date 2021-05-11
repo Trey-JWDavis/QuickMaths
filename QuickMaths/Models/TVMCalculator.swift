@@ -48,7 +48,11 @@ struct TVMCalculator {
     }
     
     mutating func calcPresentValue() {
-        presentValue = futureValue / pow((1 + interest), numberOfYears)
+        if futureValue == 0 {
+            presentValue = -paymentAmount * ((1 - pow((1 + (interest / paymentsPerYear)), -(numberOfYears * paymentsPerYear))) / (interest / paymentsPerYear))
+        } else {
+            presentValue = futureValue / pow((1 + interest), numberOfYears)
+        }
     }
     
     mutating func calcInterest() {
