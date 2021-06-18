@@ -86,4 +86,8 @@ class TVMViewModel: ObservableObject {
     func clear() {
         calculator.clear()
     }
+    
+    func calcYears() {
+        calculator.calcYears()
+    }
 }

@@ -28,11 +28,11 @@ struct TVMCalculator {
         self = .init()
     }
     
-    mutating func calcFutureValue() {
-        if (presentValue == 0) {
-            futureValue = (paymentAmount / interest) * (pow((1 + interest), numberOfYears) - 1)
+    mutating func calcPresentValue() {
+        if futureValue == 0 {
+            presentValue = -paymentAmount * ((1 - pow((1 + (interest / paymentsPerYear)), -(numberOfYears * paymentsPerYear))) / (interest / paymentsPerYear))
         } else {
-            futureValue = presentValue! * pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears))
+            presentValue = futureValue / pow((1 + (interest / paymentsPerYear)), (numberOfYears * paymentsPerYear))
         }
     }
 
@@ -44,15 +44,10 @@ struct TVMCalculator {
         } else {
             paymentAmount = futureValue / ( (pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears)) - 1) / (interest / paymentsPerYear) )
         }
-
     }
     
-    mutating func calcPresentValue() {
-        if futureValue == 0 {
-            presentValue = -paymentAmount * ((1 - pow((1 + (interest / paymentsPerYear)), -(numberOfYears * paymentsPerYear))) / (interest / paymentsPerYear))
-        } else {
-            presentValue = futureValue / pow((1 + interest), numberOfYears)
-        }
+    mutating func calcYears() {
+        numberOfYears = (log(futureValue) - log(presentValue!)) / log(1 + interest)
     }
     
     mutating func calcInterest() {
@@ -62,6 +57,15 @@ struct TVMCalculator {
             interest = IRR(for: Int(paymentsPerYear * numberOfYears))
         }
     }
+    
+    mutating func calcFutureValue() {
+        if (presentValue == 0) {
+            futureValue = (paymentAmount / interest) * (pow((1 + interest), numberOfYears) - 1)
+        } else {
+            futureValue = presentValue! * pow((1 + (interest / paymentsPerYear)),(paymentsPerYear * numberOfYears))
+        }
+    }
+    
     
     // Accurate within 0.00001 percent
     // If no result after 20 tries, -1 is returned

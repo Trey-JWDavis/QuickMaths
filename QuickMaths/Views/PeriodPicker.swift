@@ -21,7 +21,7 @@ struct PeriodPicker: View {
 
 enum Period: String, Equatable, CaseIterable, Identifiable {
     case annually = "Annually"
-    case semiannually = "Semiannually"
+    case semiannually = "Semi-annually"
     case quarterly = "Quarterly"
     case monthly = "Monthly"
     case weekly = "Weekly"

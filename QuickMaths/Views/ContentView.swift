@@ -17,7 +17,8 @@ struct ContentView: View {
                         Text("TVM")
                     }
                     
-                Text("Second")
+                NpvIrrView(calculator: NpvIrrViewModel())
+                    .padding()
                     .tabItem {
                         Text("NPV/IRR")
                     }

@@ -61,13 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				0A9D1B21260E3A9100E3DCD5 /* ContentView.swift */,
-				0AC5BA362612431F00AD4D5B /* TVMView.swift */,
-				0AB54AAE2641B2D10052E707 /* InputList.swift */,
-				0AB54AAC2641AB8E0052E707 /* CalculatorButtonBar.swift */,
+				0AF8FFF6264B07550079824C /* TVM */,
 				0AB54AAA2641A3480052E707 /* CalculatorButtonStyle.swift */,
 				0A0216E72613BD7800E685EF /* NumericTextField.swift */,
 				0A38E204262755D600CBE6C1 /* PeriodPicker.swift */,
-				0A909C53262DEFF600537F4A /* NpvIrrView.swift */,
+				0AF8FFF7264B07770079824C /* NPV */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +125,24 @@
 				0A9D1B26260E3A9300E3DCD5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0AF8FFF6264B07550079824C /* TVM */ = {
+			isa = PBXGroup;
+			children = (
+				0AC5BA362612431F00AD4D5B /* TVMView.swift */,
+				0AB54AAE2641B2D10052E707 /* InputList.swift */,
+				0AB54AAC2641AB8E0052E707 /* CalculatorButtonBar.swift */,
+			);
+			path = TVM;
+			sourceTree = "<group>";
+		};
+		0AF8FFF7264B07770079824C /* NPV */ = {
+			isa = PBXGroup;
+			children = (
+				0A909C53262DEFF600537F4A /* NpvIrrView.swift */,
+			);
+			path = NPV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

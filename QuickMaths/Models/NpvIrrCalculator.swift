@@ -16,7 +16,7 @@ struct NpvIrrCalculator {
     var futureValue: Double
     
     init() {
-        holdingPeriod = 5
+        holdingPeriod = 0
         npv = 0
         irr = 0
         cashflows = []

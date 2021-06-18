@@ -19,9 +19,13 @@ struct InputList: View {
         
         currencyFormatter = NumberFormatter()
         currencyFormatter.numberStyle = .currency
+        currencyFormatter.minimumFractionDigits = 0
+        currencyFormatter.maximumFractionDigits = 2
         
         percentFormatter = NumberFormatter()
         percentFormatter.numberStyle = .percent
+        percentFormatter.minimumFractionDigits = 0
+        percentFormatter.maximumFractionDigits = 2
         percentFormatter.usesSignificantDigits = true
         percentFormatter.maximumSignificantDigits = 4
     }
@@ -34,7 +38,7 @@ struct InputList: View {
                 NumericTextField(input: $calculator.presentValue, formatter: currencyFormatter).frame(width: textFieldWidth)
             }
             HStack {
-                Text("Payment Amount: ")
+                Text("Payments: ")
                 Spacer()
                 NumericTextField(input: $calculator.paymentAmount, formatter: currencyFormatter).frame(width: textFieldWidth)
             }
@@ -43,6 +47,7 @@ struct InputList: View {
                 Spacer()
                 PeriodPicker(n: $calculator.paymentsPerYear)
                     .pickerStyle(MenuPickerStyle())
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             HStack {
                 Text("Years: ")
@@ -69,7 +74,7 @@ struct InputList: View {
 
 // Tuning Variables
 extension InputList {
-    var textFieldWidth: CGFloat { size.width / 3 }
+    var textFieldWidth: CGFloat { size.width / 2 }
 }
 
 struct InputList_Previews: PreviewProvider {

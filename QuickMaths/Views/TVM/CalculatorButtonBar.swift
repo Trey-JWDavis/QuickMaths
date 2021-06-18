@@ -13,13 +13,7 @@ struct CalculatorButtonBar: View {
     
     var body: some View {
         VStack(spacing: vSpacing) {
-            HStack {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                    calculator.clear()
-                }) { Text("Clear") }
-            }
+            
             
             HStack(spacing: hSpacing) {
                 Button(action: {
@@ -29,18 +23,39 @@ struct CalculatorButtonBar: View {
                 
                 Button(action: {
                     hideKeyboard()
-                    calculator.calcInterest()
-                }) { Text("I/YR") }
-                
-                Button(action: {
-                    hideKeyboard()
                     calculator.calcPayment()
                 }) { Text("PMT") }
                 
                 Button(action: {
                     hideKeyboard()
+                    calculator.calcYears()
+                }, label: {
+                    Text("YRs")
+                })
+                
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcInterest()
+                }) { Text("I/YR") }
+            }
+            
+            HStack(spacing: hSpacing) {
+                
+                Button(action: {
+                    hideKeyboard()
                     calculator.calcFutureValue()
                 }) { Text("FV") }
+                Spacer()
+                
+                Button(action: {
+                    hideKeyboard()
+                    // calculator.clear()
+                }) { Text("Save") }
+                
+                Button(action: {
+                    hideKeyboard()
+                    calculator.clear()
+                }) { Text("Clear") }
             }
         }
         .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
