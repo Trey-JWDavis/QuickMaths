@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InputList: View {
+struct InputGrid: View {
     @ObservedObject var calculator: TVMViewModel
     private var size: CGSize
     private var currencyFormatter: NumberFormatter
@@ -31,14 +31,23 @@ struct InputList: View {
     }
     
     var body: some View {
-        List {
+        VStack {
             HStack {
-                Text("Present Value: ")
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcPresentValue()
+                }) { Text("Present Value") }
+                .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
+                
                 Spacer()
                 NumericTextField(input: $calculator.presentValue, formatter: currencyFormatter).frame(width: textFieldWidth)
             }
             HStack {
-                Text("Payments: ")
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcPayment()
+                }) { Text("Payments") }
+                .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
                 Spacer()
                 NumericTextField(input: $calculator.paymentAmount, formatter: currencyFormatter).frame(width: textFieldWidth)
             }
@@ -50,18 +59,30 @@ struct InputList: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             HStack {
-                Text("Years: ")
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcYears()
+                }) { Text("Years") }
+                .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
                 Spacer()
                 NumericTextField(input: $calculator.numberOfYears).frame(width: textFieldWidth)
             }
             HStack {
-                Text("Interest: ")
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcInterest()
+                }) { Text("Interest") }
+                .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
                 Spacer()
                 NumericTextField(input: $calculator.interest, formatter: percentFormatter)
                     .frame(width: textFieldWidth)
             }
             HStack {
-                Text("Future Value: ")
+                Button(action: {
+                    hideKeyboard()
+                    calculator.calcFutureValue()
+                }) { Text("Future Value") }
+                .buttonStyle(CalculatorButtonStyle(width: buttonWidth))
                 Spacer()
                 NumericTextField(input: $calculator.futureValue, formatter: currencyFormatter).frame(width: textFieldWidth)
             }
@@ -73,14 +94,15 @@ struct InputList: View {
 }
 
 // Tuning Variables
-extension InputList {
+extension InputGrid {
     var textFieldWidth: CGFloat { size.width / 2 }
+    var buttonWidth: CGFloat { size.width / 2.5 }
 }
 
 struct InputList_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            InputList(calc: TVMViewModel(), size: geo.size)
+            InputGrid(calc: TVMViewModel(), size: geo.size)
         }
     }
 }

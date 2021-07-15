@@ -12,18 +12,17 @@ struct ContentView: View {
         NavigationView {
             TabView {
                 TVMView(calculator: TVMViewModel())
-                    .padding()
-                    .tabItem {
-                        Text("TVM")
-                    }
-                    
+                    .tabItem { Image(systemName: "dollarsign.circle") }
+                
                 NpvIrrView(calculator: NpvIrrViewModel())
-                    .padding()
-                    .tabItem {
-                        Text("NPV/IRR")
-                    }
+                    .tabItem { Image(systemName: "clock.arrow.circlepath") }
             }
             .navigationTitle("Time Value of Money")
+            .navigationBarItems(trailing: Button(action: {
+                // Save here
+            }, label: {
+                Image(systemName: "square.and.arrow.down")
+            }))
         }
     }
 }

@@ -13,6 +13,7 @@ struct CalculatorButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
+//                .padding(8)
                 .frame(width: width, height: 35)
                 .foregroundColor(.white)
                 .background(
@@ -21,6 +22,6 @@ struct CalculatorButtonStyle: ButtonStyle {
                         .opacity(configuration.isPressed ? 0.5 : 1)
                 )
                 .cornerRadius(10)
-                .shadow(radius: 5)
+                .shadow(radius: 3)
     }
 }

@@ -14,12 +14,21 @@ struct TVMView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                InputList(calc: calculator, size: geometry.size)
-                CalculatorButtonBar(calculator: calculator, size: geometry.size)
-            }
-                .onTapGesture {
-                    hideKeyboard()
-                }
+                InputGrid(calc: calculator, size: geometry.size)
+                
+                Button(action: {
+                    calculator.clear()
+                }, label: {
+                    Text("Clear All")
+                })
+                    .padding()
+                    .buttonStyle(CalculatorButtonStyle(width: geometry.size.width / 2))
+                
+                Spacer()
+            }.padding()
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
     }
 }

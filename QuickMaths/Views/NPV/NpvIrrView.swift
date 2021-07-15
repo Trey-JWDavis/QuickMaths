@@ -25,6 +25,7 @@ struct NpvIrrView: View {
                     }
                 }
             }
+            .padding()
             .multilineTextAlignment(.trailing)
             .listStyle(PlainListStyle())
             .textFieldStyle(RoundedBorderTextFieldStyle())
